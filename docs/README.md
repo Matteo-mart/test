@@ -244,3 +244,14 @@ Afin de garantir le rendu rétro 90s et les performances physiques, appliquez le
 | `rendering/textures/canvas_textures/default_texture_filter` | `nearest` | Rendu de textures sans filtrage linéaire |
 | `physics/common/physics_ticks_per_second` | `60` | Stabilité de la simulation physique |
 | `rendering/anti_aliasing/quality/msaa_3d` | `disabled` | Conservation de l'aliasing esthétique 90s |
+
+## 10. Guide de Sauvegarde & Persistance
+
+### Le système de persistance repose sur SaveSystem (autoload/save_system.gd), ### sérialisant les états de jeu au format JSON dans user://saves/slot_X.json.
+### Fonctionnement des Points de Sauvegarde
+
+- Les sauvegardes s'effectuent exclusivement en interagissant avec les magnétophones à cassette disposés dans le complexe.
+
+- Récupérer une sauvegarde restaure l'inventaire, l'état de la lampe torche, les munitions et la collection de flags globaux.
+
+- Pour éviter la complexification de la sérialisation d'états physiques, les ennemis et objets dynamiques non ramassés se réinitialisent à leur état de zone initial lors du rechargement.
